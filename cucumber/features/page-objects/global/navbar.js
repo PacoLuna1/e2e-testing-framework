@@ -5,6 +5,7 @@ class NavBar {
      * sub-component declaration
      */
     searchBar = new SearchBar('#suggestion-search-container')
+    
 
     /**
      * Getters
