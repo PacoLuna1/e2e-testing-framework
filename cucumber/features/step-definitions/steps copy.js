@@ -8,7 +8,6 @@ const pages = {
   home: HomePage
 }
 
-
 Given(/^I am on the (\w+) page$/, 
 async (page) =>{ 
         await pages[page].open();        
@@ -23,13 +22,24 @@ Then(/^on the page I select "([^"]*)" movie$/,
     await MovieList.selectMovie(name);
 })
 
-Then(/^I should see that the ranking is "([^"]*)"$/, 
+Then(/^I should see the director "([^"]*)"$/, 
     async (name) => {
-    const { rankingMovie } = Movie;
-    await rankingMovie.waitForDisplayed({
+    const { directorName } = Movie;
+    await directorName.waitForDisplayed({
         timeout: 2500,
-        timeoutMsg: 'The ranking was not displayed'
+        timeoutMsg: 'The director name was not displayed'
     });
-    const text = await rankingMovie.getText();
+    const text = await directorName.getText();
+    expect(text).toMatch(name);
+    });
+
+Then(/^I should see the star "([^"]*)"$/, 
+    async (name) => {
+    const { starName } = Movie;
+    await starName.waitForDisplayed({
+        timeout: 2500,
+        timeoutMsg: 'The star name was not displayed'
+    });
+    const text = await starName.getText();
     expect(text).toMatch(name);
     });

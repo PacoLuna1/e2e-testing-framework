@@ -1,3 +1,4 @@
+
 class SearchBar {
     constructor(parentLocator) {
         this.parentLocator = parentLocator;
@@ -13,6 +14,20 @@ class SearchBar {
     
     get categoryDropdown() {
         return $(`${this.parentLocator} .ipc-button`);
+    }
+
+    async searchText(movie){
+    const input = this.input;
+    const mag = this.mag;
+    await input.waitForClickable({ 
+        timeout: 2500, 
+        timeoutMsg: 'Either the nabvar or the select category dropdownn were not displayed' 
+    });
+    await input.click()
+    
+    await input.setValue(movie)
+    
+    await mag.click();
     }
 
     /**
