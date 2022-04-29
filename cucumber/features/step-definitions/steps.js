@@ -33,8 +33,8 @@ When(/^on the navbar I search "([^"]*)"$/, (movie) => {
 });
 
 When(/^on the page I select "([^"]*)"$/,    //"(\w+)"
-    async () => {
-        await MovieList.movieName();
+    async (name) => {
+        await MovieList.movieName(name);
     })
 
 
